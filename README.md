@@ -8,3 +8,4 @@ estoy precticando mucho
 he conectado por primera vez
 conflicto vscode
 nuevo cambio para conflicto en github
+haciendo gitflow
