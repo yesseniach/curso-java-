@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/backend" method="post">
+
+        <div>
+            <label for="firstName">Nombre</label>
+            <input type="text" name="firstName" id="firstName">
+        </div>
+        <br>
+
+        <div>
+            <label for="nif">nif/dni</label>
+            <input type="text" name="nif" id="nif" placeholder="87654321J">
+        </div> 
+        <br>
+
+        <div>
+            <label for="phone">phone</label>
+            <input type="text" name="phone" id="phone" placeholder="+34914678743">
+        </div>
+        <br>
+
+        <div>
+            <label for="lasttName">Apellido</label>
+            <input type="text" name="lastName" id="lastName">
+        </div>
+        <br>
+        
+        <div>
+            <label for="email">Correo electronico</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <br>
+         
+        <div>
+            <label for="age">Edad</label>
+            <input type="number" name="age" id="age"></input>
+        </div>
+        <br>
+
+        
+         <div>
+            <label for="salary">salary</label>
+            <input type="number" name="salary" id="salary" step="200"></input> 
+         </div> 
+        <br>
+
+        <div>
+            <label for="weigth">Weigth (Kg)</label>
+            <input type="weigth" name="weigth" id="weigth" step="0,01"></input>  
+        </div>
+        <br>
+        
+        <div>
+            <label for="heigth">Heigth (cm)</label>
+            <input type="Heigth" name="Heigth" id="Heigth" step="0,01" min="50" max="240"></input> 
+        </div>
+        <br>
+
+        <div>
+            <label for="bio">Biografia</label>
+            <textarea id="bio" name="bio" rows="10" cols="50" minlength="10" maxlength="100"></textarea>
+        </div>
+        <br>
+
+
+        <div>
+            <input type="checkbox" name="terms" id="terms">
+            <label>He leido y acepto los
+                <a href="#" ></a>terminos y condiciones></label>
+        </div>
+
+        <div>
+            <input type="radio"id="male" name="genre" value="male">
+            <label for="male">Masculino</label>
+        </div>
+
+        <div>
+            <input type="radio"id="female" name="genre" value="female">
+            <label for="female">Femenino</label>
+        </div>
+
+        <div>
+            <input type="radio"id="other" name="genre" value="other">
+            <label for="other">Otro</label>
+        </div>
+
+        <div>
+            <label for="birthDate">Fecha de Nacimiento</label>
+            <input type="date" id="birthDate" name="birthDate" min="2010-01-01" max="2023-12-31">
+        </div>
+
+        <div>
+            <label for="courseDateTime">Fecha de comienzo del curso</label>
+            <input type="datetime-local" id="courseDateTime" name="courseDateTime" hora>
+        </div>
+
+        <!---file-->
+        <!---password-->
+        <!---hidden-->
+
+        <!---select simple-->
+        <!---select multiple-->
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    
+    
+</body>
+</html>
