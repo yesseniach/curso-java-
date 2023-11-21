@@ -16,13 +16,13 @@
         <br>
 
         <div>
-            <label for="nif">nif/dni</label>
+            <label for="nif">Nif/Dni</label>
             <input type="text" name="nif" id="nif" placeholder="87654321J">
         </div> 
         <br>
 
         <div>
-            <label for="phone">phone</label>
+            <label for="phone">Phone</label>
             <input type="text" name="phone" id="phone" placeholder="+34914678743">
         </div>
         <br>
@@ -47,7 +47,7 @@
 
         
          <div>
-            <label for="salary">salary</label>
+            <label for="salary">Salary</label>
             <input type="number" name="salary" id="salary" step="200"></input> 
          </div> 
         <br>
@@ -76,43 +76,81 @@
             <label>He leido y acepto los
                 <a href="#" ></a>terminos y condiciones></label>
         </div>
-
+   
         <div>
             <input type="radio"id="male" name="genre" value="male">
             <label for="male">Masculino</label>
         </div>
-
+   
         <div>
             <input type="radio"id="female" name="genre" value="female">
             <label for="female">Femenino</label>
         </div>
-
+       
         <div>
             <input type="radio"id="other" name="genre" value="other">
             <label for="other">Otro</label>
         </div>
-
+    
         <div>
             <label for="birthDate">Fecha de Nacimiento</label>
             <input type="date" id="birthDate" name="birthDate" min="2010-01-01" max="2023-12-31">
         </div>
+        <br>
 
         <div>
             <label for="courseDateTime">Fecha de comienzo del curso</label>
             <input type="datetime-local" id="courseDateTime" name="courseDateTime" hora>
         </div>
-
+        <br>
         <!---file-->
         <!---password-->
         <!---hidden-->
 
         <!---select simple-->
         <!---select multiple-->
+        <div>
+            <select name="company" id="company">
+                <option value="" disabled select>Seleccionar empresa</option>
+                <option value="adecco">Fundacion Adecco</option>
+                <option value="certidevs">CertiDevs</option>
+                <option value="cosmicDevelopments">Cosmic Developments</option>
+
+            </select>
+        </div>
+
+        <div>
+           <label for="knowledge">lenguaje de programacion conocidos:</label>
+            <select name="knowledge" id="knowledge" multiple>   
+
+                <option value="" disabled select>Seleccionar lenguaje</option>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="html">Html</option>submit">Enviar</button>
+                <option value="css">Css</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass">
+            <button type="button" onclick="showPassword()">Mostrar password</button>
+        </div>
 
         <button type="submit">Enviar</button>
     </form>
 
-    
-    
+    <script>
+        function showPassword() {
+            let passInput = document.getElementById('pass');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+            } else {
+                passInput.type = 'password';
+            }
+        }
+    </script>
+
+
 </body>
 </html>
