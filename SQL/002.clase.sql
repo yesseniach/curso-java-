@@ -1,5 +1,5 @@
 
-SE sakila;
+USE sakila;
 
 show databases;
 
@@ -152,8 +152,3 @@ UPDATE products SET price = 44.55 WHERE title LIKE '%Meat%';
 
 
 
-
-
-
-
---
