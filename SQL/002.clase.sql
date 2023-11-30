@@ -150,5 +150,62 @@ WHERE id = 8;
 select * from products;
 UPDATE products SET price = 44.55 WHERE title LIKE '%Meat%';
 
+-- operacion en UPDATE
+UPDATE products SET price = price * 0.90;
+UPDATE products SET price = ROUND(price * 0.90, 2);
+-- Operacion en UPDATE aumentar un 10% el precio de los productos:
+UPDATE products SET price = round(price * 1.10, 2);
+
+-- Operacion UPDATE: sumar una cantidad a un precio:
+UPDATE products SET price = price - 10;
+
+-- UPDATE sobre film, crear 1 sentencia:
+-- sumar 1 a release_year
+-- rating lo cambie a release savepoint
+-- a aquellas peliculas cuya length este entre 50 y 80
+select * from film;
+SELECT * FROM film WHERE length BETWEEN 50 AND 80;
+
+UPDATE film SET release_year = release_year + 1, rating = 'R'
+WHERE length BETWEEN 50 AND 80;
 
 
+
+
+-- DELETE:
+select * from `products`;
+-- DELETE FROM `products`; -- Borrar todas las filas
+DELETE FROM `products` WHERE `price` > 70; -- Borrar solo algunos productos
+
+DElETE FROM `products` WHERE id = 5; -- BOrrar uno
+
+TRUNCATE TABLE `products`; -- vaciar la tabla sin borrarla
+
+-- DELETE FROM elimina todas las filas de la tabla una por una utilixando condiciones eleboradas
+
+-- TRUNCATE TABLE borrado rapido y liberacion de espacio, sin filtros ni registros 
+
+-- DROP TABLE Borra la tabla completa, desaparece la tabla
+
+DROP TABLE products;
+DROP TABLE IF EXISTS products;
+
+-- Las acciones deberian quedar registradas en logs
+-- Ver my.ini o my.cnf
+
+DROP DATABASE IF EXISTS demo1;
+
+
+-- crear tabla alumnos y pasar lista
+CREATE TABLE IF NOT EXISTS students (
+   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   first_name VARCHAR(50) NOT NULL, -- OBLIGATORIO
+   last_name VARCHAR(50), -- opcional
+   email VARCHAR(50) NOT NULL UNIQUE, -- OBLIGATORIO; UNICO NO PUEDE HABER DUPLICADOS
+   country VARCHAR(30) DEFAULT 'Spain',
+   age INT CHECK (age >= 18 AND age <= 150),
+   class_date DATE,
+   class_attendance TINYINT(1) DEFAULT 1
+  ); 
+INSERT INTO `sakila`.`students` (`first_name`, `last_name`, `email`, `country`, `age`, `class_date`, `class_attendance`) VALUES ('Yessenia', 'Cherrez', 'yesseniacherrezh', 'Ecuador', '47', '2023-11-29', '1');
+select * from students;

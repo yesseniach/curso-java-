@@ -54,5 +54,46 @@ select min(`length`) from film;
 select min(`length`) as min_duration from film;
 -- max: obtener el valor maximo
 select * from film;
-select max(`length`) from film;
 select max(`length`) as max_duration from film;
+
+-- year: xtraer el año a partir de una fecha
+-- Ej 1:sobre create_date de customer
+select * from customer;
+select 
+year(create_date) as `año`,
+month(create_date) as `nombre_mes`, -- 1 a 12
+monthname(create_date) as `nombre_mes`,
+week(create_date) as `semana`, -- 1 a 52
+dayofyear(create_date) as `dia`, -- 1 a 365
+dayofmonth(create_date) as `dia_mes`, -- 1 a 31
+dayofweek(create_date) as `dia_semana` -- 1 a 7
+from customer;
+
+-- Ej 2: sobre payment_date de payment
+select * from payment;
+select 
+payment_date as `fecha_original`,
+date(payment_date) as `fecha_sin_tiempo`,
+year(payment_date) as `año`,
+month(payment_date) as `nombre_mes`,
+monthname(payment_date) as `nombre_mes`,
+week(payment_date) as `semana`,
+dayofyear(payment_date) as `dia`,
+dayofmonth(payment_date) as `dia_mes`,
+dayofweek(payment_date) as `dia_semana`
+from payment;
+
+-- concat, length, upper, lower
+select * from customer;
+
+select concat(first_name, '_', last_name) as full_name from customer;
+
+select  first_name, length(first_name) as `longuitud` from customer;
+
+select lower(first_name) as `nombre`,length(first_name)as `longuitud` from customer;
+
+-- desc
+select  
+ first_name, 
+ length(first_name) as `longuitud`
+order by length(first_name) desc;
