@@ -9,7 +9,7 @@ select * from payment order by amount DESC; -- DESC descentente es de mayor a me
 -- select * from payment order by amount where amount > 4; -- incorrecto primero va where
 select * from payment where amount >3 order by amount ASC;
 
-
+select * from payment where staff_id = 1 order by amount ASC;
 
 -- Order 2 columnas
 
