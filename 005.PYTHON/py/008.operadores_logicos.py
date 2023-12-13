@@ -25,3 +25,20 @@ if es_estudiante or precio >= 100:
     print(f'Descuento del 20%, precio final: {precio * 0.80}')
 else:
     print(f'Precio final: {precio}')   
+    
+    
+# not: invierte una condicion o bool existente
+# En java es !
+edad = int(input('introduce tu edad: '))
+if not edad >= 18:
+    print('No tiene acceso.')
+    
+# Ejemplo not: todos los campos son obligatorios
+email = input('INtroduce email:')
+password = input('Introduce contraseña:')
+
+if not email or not password:
+    print('Todos los campos son obligatorios.')
+else:
+    print('Registro completo.')
+    
