@@ -26,6 +26,7 @@ print(f"persona_a_atender {persona_a_atender}") # persona2
 # del() te permite borrar un elemento concreto sin devolverlo (DELETE)
 # Ejemplo: productos de un ecommerce, en el checkout antes de finalizar compra eliminamos uno
 precios = [5.99, 12.32, 10.00, 48.57]
+
 del precios[2]
 # del precios[2]
 print(precios)

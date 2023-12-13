@@ -30,7 +30,14 @@ precios[2] *= 0.80
 
 print(precios[2])
 
+# calcular longitud listas con el metodo len()
 
+print(len(students))
+print(len(precios))
+
+# En Java
+# arrays.length
+# ArraysList.size
 
 
 
