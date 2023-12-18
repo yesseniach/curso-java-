@@ -13,7 +13,7 @@ while True:
             break
     
     except ValueError:
-        print('FOrmato de datos incorrecto')
+        print('Formato de datos incorrecto')
         
         
         # Leer un booleano hasta que este bien escrito

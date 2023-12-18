@@ -20,4 +20,3 @@ print(f'resultado1 {resultado1}')
 resultado2 = sumatorio([100, 200, 300, 400, 500, 600])
 print(f'resultado2 {resultado2}')
     
-    
