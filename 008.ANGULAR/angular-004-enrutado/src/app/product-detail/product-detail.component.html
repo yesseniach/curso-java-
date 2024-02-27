@@ -1,1 +1,101 @@
 <p>product-detail works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    
+        @if(product){
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12"><!--lg large, md medium, sm small(movil)-->
+
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <!--Icon grid-->
+                    <div class="container px-4 py-5" id="icon-grid">
+                        <h2 class="pb-2 border-bottom">Producto {{product.id}}</h2>
+                    
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+
+                          <div class="col d-flex align-items-start">
+                            <i class="bi bi-truck flex-shrink-0 me-3 fs-2" ></i>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Titulo</h3>
+                              <p>{{product.title}}</p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <i class="bi bi-currency-euro flex-shrink-0 me-3 fs-2"></i>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio (€)</h3>
+                              <p>{{product.price}} €</p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                          </div>
+
+                          <div class="col d-flex align-items-start">
+                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"></use></svg>
+                            <div>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
+                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- carrusel de fotos-->
+
+        } @else {
+            <ngb-alert [dismissible]="false" type="danger"> 
+                <strong>ERROR:</strong>No se ha encontrado el producto.
+            </ngb-alert>
+        }
+
+
+    </div>
+  </div>
+</div>
