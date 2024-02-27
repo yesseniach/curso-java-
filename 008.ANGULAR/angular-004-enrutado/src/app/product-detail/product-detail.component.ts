@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.models';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [],
+  imports: [ [NgbAlertModule]],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -27,13 +28,15 @@ export class ProductDetailComponent implements OnInit{
       console.log(params['id']);//id es el nombre que asignamos en app.routes.ts
     
      //Aqui obtendriamos un product de backend, vamos a crear uno manualmente
+     
       this.product= {
         id: 1,
         title: 'product',
         price: 40,
-        available: false,
+       available: false,
         publishDate: new Date()
       };
+      
     });
   }
 
