@@ -1,1 +1,10 @@
 <p>product-list works!</p>
+
+<ul>
+    @for (product of products; track product.id) {
+        <li>
+            <!--Queremos navegar a la pantalla http://localhost:4200/products/3/detail-->
+          <a [routerLink]="['/products', product.id, 'detail']">{{product.title}}</a>
+        </li>
+    }
+</ul>
