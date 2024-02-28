@@ -1,23 +1,51 @@
-<p>product-detail works!</p>
+<div class="container mt-5 mb-5 ">
+  <div class="row">
+    <div class="col text-center">
+      <!--Carrusel de imagenes-->
+
+      @if (images) {
+        <ngb-carousel>
+
+          @for (image of images; track image) {
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img [src]="image" alt="Random first slide" />
+              </div>
+              <div class="carousel-caption">
+                <h3>Naturaleza</h3>
+                <p>Vive a tope!.</p>
+              </div>
+            </ng-template>
+          }
+
+        </ngb-carousel>
+        }
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <div class="container">
   <div class="row">
     <div class="col">
-
-    
-        @if(product){
+           @if(product){
             <div class="container">
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12"><!--lg large, md medium, sm small(movil)-->
-
+                  <!--Mostrar imagen-->
+                  <img [src]="product.imageUrl" class="img-fluid">
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <!--Icon grid-->
                     <div class="container px-4 py-5" id="icon-grid">
                         <h2 class="pb-2 border-bottom">Producto {{product.id}}</h2>
-                    
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
-
+                                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5"><!--para el numero de columnas-->
                           <div class="col d-flex align-items-start">
                             <i class="bi bi-truck flex-shrink-0 me-3 fs-2" ></i>
                             <div>
@@ -25,7 +53,6 @@
                               <p>{{product.title}}</p>
                             </div>
                           </div>
-
                           <div class="col d-flex align-items-start">
                             <i class="bi bi-currency-euro flex-shrink-0 me-3 fs-2"></i>
                             <div>
@@ -33,20 +60,19 @@
                               <p>{{product.price}} €</p>
                             </div>
                           </div>
-
                           <div class="col d-flex align-items-start">
-                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"></use></svg>
+                            <i class="bi bi-magic flex-shrink-0 me-3 fs-2"></i>
                             <div>
-                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
-                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponible</h3>
+                              <p>{{product.available}}</p>
                             </div>
                           </div>
 
                           <div class="col d-flex align-items-start">
-                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"></use></svg>
+                            <i class="bi bi-calendar2-week flex-shrink-0 me-3 fs-2"></i>
                             <div>
-                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título destacado</font></font></h3>
-                              <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Párrafo de texto debajo del título para explicar el título.</font></font></p>
+                              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Fecha Publicación</h3>
+                              <p>{{product.publishDate}}</p>
                             </div>
                           </div>
 
@@ -96,6 +122,70 @@
         }
 
 
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!--Acordeon de ngBootstrap-->
+      <h2 class="mt-3 mb-3 text-center">Preguntas y respuestas</h2>
+      <div ngbAccordion>
+        <div ngbAccordionItem [collapsed]="false">
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>¿Cúal es la política de devoluciones?</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div ngbAccordionItem>
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>
+              <span>¿Qué tarifas de envío existen?</span>
+            </button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div ngbAccordionItem>
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>¿Cúal es el origen de los Productos?</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

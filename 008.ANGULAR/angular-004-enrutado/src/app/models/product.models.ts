@@ -4,4 +4,5 @@ export interface Product {
     price: number;
     available: boolean;
     publishDate: Date;
+    imageUrl: string; //contiene la url a una imagen
 }

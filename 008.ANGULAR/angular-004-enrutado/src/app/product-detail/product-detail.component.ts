@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.models';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbAlertModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [ [NgbAlertModule]],
+  imports: [ NgbAlertModule, NgbAccordionModule, NgbCarouselModule ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -14,6 +14,12 @@ export class ProductDetailComponent implements OnInit{
 
   //producto
   product: Product | undefined;
+  //Array de imagenes para el acordeón
+  images: string[] = [
+    "https://picsum.photos/id/944/900/500",
+    "https://picsum.photos/id/1011/900/500",
+    "https://picsum.photos/id/984/900/500",
+  ];
 
   //Angular inyecta este objeto en nuestro componente
   constructor(private activatedRoute: ActivatedRoute){}
@@ -33,8 +39,9 @@ export class ProductDetailComponent implements OnInit{
         id: 1,
         title: 'product',
         price: 40,
-       available: false,
-        publishDate: new Date()
+        available: false,
+        publishDate: new Date(),
+        imageUrl: 'https://picsum.photos/id/944/900/500'
       };
       
     });
