@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { ActivatedRoute } from '@angular/router';
+import { Cart } from '../models/cart.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailComponent implements OnInit {
 
   user: User | undefined;
+  carts: Cart[] = [];
 
   constructor(
     private httpClient: HttpClient,
@@ -20,18 +22,17 @@ export class UserDetailComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
-
       const backendUrl = 'https://fakestoreapi.com/users/' + id;
       this.httpClient.get<User>(backendUrl).subscribe(userFromBackend => {
-        //guardar respuesta backend
         this.user = userFromBackend;
-
       });
+      const cartsUrl = 'https://fakestoreapi.com/carts/user/' + id;
+      this.httpClient.get<Cart[]>(cartsUrl).subscribe(cartsFromBackend => {
+        this.carts = cartsFromBackend;
+      });
+      
     });
-   
   }
-  
 }
