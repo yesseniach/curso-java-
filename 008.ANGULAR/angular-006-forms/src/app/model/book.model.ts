@@ -4,4 +4,7 @@ export interface Book {
     price: number;
     available: boolean;
     publishdate: Date;
+    //se utiliza para Selectores
+    category: string;
+    topics: string[];
 }
