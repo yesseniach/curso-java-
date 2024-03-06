@@ -17,14 +17,49 @@
             </div>
         }
       </div>
-      
+
       <div class="form-floating">
         <input type="text" class="form-control" id="password" placeholder="Phone" formControlName="phone">
         <label for="phone">Telefóno movil</label>
+        @if (registerForm.controls.phone.touched && registerForm.controls.phone.errors) {
+          <div>
+            @if (registerForm.controls.phone.errors['required']){
+              <small class="text-danger">Teléfono es obligatorio</small>
+            }
+            @if (registerForm.controls.phone.errors['pattern']){
+              <small class="text-danger">Formato de teléfono es incorrecto. Debe tener 9 digitos</small>
+            }
+          </div>
+        }
       </div>
+
       <div class="form-floating">
         <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
         <label for="password">Password</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" formControlName="passwordConfirm">
+        <label for="passwordConfirm">Confirmación password</label>
+
+        @if( registerForm.controls.passwordConfirm.touched &&
+        (registerForm.controls.password.errors ||
+         registerForm.controls.passwordConfirm.errors ||
+         registerForm.getError('confirmError')
+         )
+        ){
+          <small class="text-danger">
+            La contraseña y confirmación son obligatorias, deben coincidir y estar comprendidas entre 8 y 30 caracteres.
+          </small>
+        }
+
+        <!--
+        @if (registerForm.controls.passwordConfirm.touched && registerForm.getError('confirmError')){
+          <div>
+            <small class="text-danger">Las contraseñas no coinciden</small>
+          </div>
+        } 
+        -->
       </div>
         
       <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="registerForm.invalid">Registrarse</button>

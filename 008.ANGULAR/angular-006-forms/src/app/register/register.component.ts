@@ -1,6 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../model/register.model';
 
 @Component({
@@ -15,9 +15,26 @@ export class RegisterComponent {
   //no necesita FormBuilder
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('')]),
-    password: new FormControl('')
-  });
+    phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{9}$')]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]),
+    passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(30)])
+  },
+  {validators: this.passwordConfirmValidator} //Validador personalizado que comprueba dos campos al mismo tiempo
+  );
+
+  constructor(private httpClient: HttpClient) {}
+
+  passwordConfirmValidator(control: AbstractControl){
+
+    if (control.get('password')?.value === control.get('passwordConfirm')?.value) {
+      return null; //las password coinciden por tanto no hay error devolvemos null
+    }else {
+      // las password no coinciden devolver un error
+      return {
+        'confirmError': true
+      }
+    }
+  }
 
   save() {
     const register: Register = {
