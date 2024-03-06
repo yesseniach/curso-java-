@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../model/register.model';
 
 @Component({
@@ -14,8 +14,8 @@ export class RegisterComponent {
 
   //no necesita FormBuilder
   registerForm = new FormGroup({
-    id: new FormControl(''),
-    phone: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('')]),
     password: new FormControl('')
   });
 
