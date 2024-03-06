@@ -6,9 +6,19 @@
       <div class="form-floating">
         <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
         <label for="email">Email address</label>
+        @if (registerForm.controls.email.touched && registerForm.controls.email.errors){
+            <div>
+                @if (registerForm.controls.email.errors['required']) {
+                    <small class="text-danger">Email es obligatorio</small>
+                }
+                @if (registerForm.controls.email.errors['email']){
+                    <small class="text-danger">El formato del email introducido es incorrecto</small>
+                }
+            </div>
+        }
       </div>
       <div class="form-floating">
-        <input type="number" class="form-control" id="password" placeholder="Phone" formControlName="phone">
+        <input type="text" class="form-control" id="password" placeholder="Phone" formControlName="phone">
         <label for="phone">Telefóno movil</label>
       </div>
       <div class="form-floating">
@@ -16,7 +26,10 @@
         <label for="password">Password</label>
       </div>
         
-      <button class="btn btn-primary w-100 py-2" type="submit">Registrarse</button>
+      <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+      @if(registerForm.invalid){
+        <small class="text-danger">Debes completar de forma correcta los campos para poder guardar</small>
+      }
       <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
     </form>
   </main>
