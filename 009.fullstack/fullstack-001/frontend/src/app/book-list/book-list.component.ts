@@ -18,6 +18,9 @@ export class BookListComponent implements OnInit{
   ngOnInit(): void {
     
     const url = 'http://localhost:8080/books'
-    this.httpClient.get<Book[]>(url).subscribe(books => this.books = books);
+    this.httpClient.get<Book[]>(url).subscribe(books => {
+      console.log(books);
+      this.books = books}
+      );
   }
 }
