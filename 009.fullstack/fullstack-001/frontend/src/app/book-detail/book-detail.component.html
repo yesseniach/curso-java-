@@ -1,4 +1,9 @@
 
+<h1 class="mt-5 mb-5">Pantalla detalle de libro</h1>
+
 @if (book) {
     <p>{{book.id}} {{book.isbn}}</p>
+
+    <button class="btn btn-success" [routerLink]="['/books', book.id, 'update']">Editar libro</button>
 }
+

@@ -1,27 +1,20 @@
-<!--
+
+<h1 class="mt-5 mb-5">Listado de libros</h1>
+
+@if (showDeleteBookMessage){
+  <!--<ngb-alert type="success"[dismissible]="false"> Libro borrado correctamente</ngb-alert>-->
+  <ngb-alert type="success" (closed)="hideDeleteBookMessage()"> Libro borrado correctamente</ngb-alert>
+}
+
 @for (book of books; track book.id) {
     <p>
-      <a> [routerLink]="['/books, book.id, 'detail']">{{book.id}}</a> {{book.isbn}} {{book.price}}
+      {{book.id}} {{book.isbn}} {{book.price}}
+      <button class="btn btn-info" [routerLink]="['/books', book.id, 'detail']">Ver libro</button>
+      <button class="btn btn-success" [routerLink]="['/books', book.id, 'update']">Editar libro</button>
+      <button class="btn btn-danger" (click)="delete(book)">Borrar libro</button>
     </p>
 } @empty {
     <p>No hay libros</p>
 }
--->
-<!--
-@for (book of books; track book.id) {
-    <p>
-      <a [routerLink]="['/books', book.id, 'detail']">{{book.id}}</a> {{book.isbn}} {{book.price}}
-    </p>
-  } @empty {
-    <p>No hay libros.</p>
-  }
- -->
 
- @for (book of books; track book.id) {
-    <p>
-      <a> <div routerLink="['/books', book.id, 'detail']"></div>{{book.id}}</a> {{book.isbn}} {{book.price}}
-    </p>
- } @empty {
-    <p>No hay libros</p>
- }
- 
+

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../model/book.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, RouterLink],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })
