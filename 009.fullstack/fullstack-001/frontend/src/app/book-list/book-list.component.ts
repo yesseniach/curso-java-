@@ -3,11 +3,12 @@ import { Book } from '../model/book.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, NgbAlertModule],
+  imports: [HttpClientModule, RouterLink, NgbAlertModule, DatePipe],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })

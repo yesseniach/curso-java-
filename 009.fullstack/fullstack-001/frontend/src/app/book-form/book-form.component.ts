@@ -1,9 +1,10 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Book } from '../model/book.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Author } from '../model/author.model';
+import { Editorial } from '../model/editorial.model';
 
 @Component({
   selector: 'app-book-form',
@@ -14,6 +15,7 @@ import { Author } from '../model/author.model';
 })
 export class BookFormComponent implements OnInit {
 
+/*
   bookForm = this.fb.group({
     id: [0],
     isbn: [''],
@@ -22,12 +24,24 @@ export class BookFormComponent implements OnInit {
       id: [0],
       fullName: [''],
       country: [''],
-      active: [true]
+      active: [false]
     })
   });
+*/
+bookForm = new FormGroup({
+  id: new FormControl<number>(0),
+  title: new FormControl<string>(''),
+  isbn: new FormControl<string>(''),
+  price: new FormControl<number>(0.0),
+  published: new FormControl<boolean>(false),
+  releaseDate: new FormControl<Date>(new Date()),
+  author: new FormControl(),
+  editorial: new FormControl()
+});
 
   isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
   authors: Author[] = []; // array de autores para asociar un autor al libro
+  editorials: Editorial[] = [];
 
   constructor(
       private fb: FormBuilder,
@@ -41,6 +55,9 @@ export class BookFormComponent implements OnInit {
       this.httpClient.get<Author[]>('http://localhost:8080/authors')
         .subscribe(authors => this.authors = authors);
 
+      this.httpClient.get<Editorial[]>('http://localhost:8080/editorials')
+        .subscribe(editorials => this.editorials = editorials); 
+
       this.activatedRoute.params.subscribe(params => {
         const id = params['id'];
         if(!id) return;
@@ -49,8 +66,13 @@ export class BookFormComponent implements OnInit {
           // cargar el libro obtenido en el formulario bookForm
           this.bookForm.reset({
             id: bookFromBackend.id,
+            title: bookFromBackend.title,
             isbn: bookFromBackend.isbn,
-            price: bookFromBackend.price
+            price: bookFromBackend.price,
+            published: bookFromBackend.published,
+            releaseDate:bookFromBackend.releaseDate,
+            author: bookFromBackend.author,
+            editorial: bookFromBackend.editorial
           });
 
           // marcar boolean true isUpdate
@@ -62,6 +84,7 @@ export class BookFormComponent implements OnInit {
 
     save () {
       const book: Book = this.bookForm.value as Book;
+      console.log(book);
 
       if (this.isUpdate) {
         const url = 'http://localhost:8080/books/' + book.id;
@@ -77,6 +100,19 @@ export class BookFormComponent implements OnInit {
       }
     }
 
+    /*
+    Función para los selectores del formulario.
+    Permite recargar un objeto en un selector
+    */
+    compareObjects(o1: any, o2: any): boolean {
+      //console.log("comparando Objetos", o1, o2);
+
+      if(o1 && o2) {
+        return o1.id === o2.id;
+      }
+
+      return o1 === o2;
+    }
 
 }
 

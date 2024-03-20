@@ -1,0 +1,73 @@
+@if (author) {
+<div class="px-4 py-5 mt-5 text-center">
+    <img class="d-block mx-auto mb-4 rounded-circle" [src]="author.photoUrl" lt="" style="max-width: 150px">
+    <h1 class="display-5 fw-bold text-body-emphasis">{{author.fullName}}</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">{{author.bio}}</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Editar</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+  
+        <h2 class="mt-5 mb-5">Listado del autor/a</h2>
+        <table class="table">
+          <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Price (€)</th>
+                <th scope="col">Published</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Editorial</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (book of books; track book.id) {
+                  <tr>
+                    <th scope="row">{{book.id}}</th>
+                    <td>{{book.title}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.price}}</td>
+                    <td>
+                      @if (book.published) {
+                        <span class="badge text-bg-success">Sí</span>
+                      } @else{
+                        <span class="badge text-bg-danger">No</span>
+                      }
+                    </td>
+                    <td>{{book.releaseDate | date:'dd/MM/yy'}}</td>
+                    <td>
+                      <a class="badge text-bg-warning text-decoration-none" [routerLink]="['/authors', book.author.id, 'detail']">
+                        {{book.author.fullName}}
+                      </a>
+                    </td>
+                    <td>
+                      <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/editorials', book.editorial.id, 'detail']">
+                        {{book.editorial.name}}
+                      </a>
+                    </td>
+                    <td>
+                      <button class="btn btn-info" [routerLink]="['/books', book.id, 'detail']">Ver</button>
+                    </td>
+                  </tr>
+                }@empty {
+                    <h5>No hay Libros</h5>
+                }
+      
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div>
+                
+
+}

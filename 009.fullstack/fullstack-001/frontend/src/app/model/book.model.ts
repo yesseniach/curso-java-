@@ -1,9 +1,14 @@
 import { Author } from "./author.model";
+import { Editorial } from "./editorial.model";
 
 export interface Book{
+[x: string]: any;
     id: number;
+    title: string;
     isbn: string;
     price: number;
-    //Asociación Many To One
+    published: boolean;
+    releaseDate: Date;
     author: Author;
+    editorial: Editorial;
 }
