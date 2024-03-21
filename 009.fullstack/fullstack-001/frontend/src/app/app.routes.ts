@@ -4,6 +4,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { AuthorFormComponent } from './author-form/author-form.component';
 
 export const routes: Routes = [
     {
@@ -33,5 +35,13 @@ export const routes: Routes = [
     {
         path: 'authors/:id/detail',
         component: AuthorDetailComponent
+    },
+    {
+        path: 'authors',
+        component: AuthorListComponent
+    },
+    {
+        path: 'authors/create',
+        component: AuthorFormComponent
     }
 ];
